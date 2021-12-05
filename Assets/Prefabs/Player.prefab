@@ -275,6 +275,7 @@ MonoBehaviour:
   Current: {fileID: 0}
   SpeedDestory: 0
   pt: {fileID: 8985677096498675909}
+  Clockwise: 0
 --- !u!114 &6153352561306158495
 MonoBehaviour:
   m_ObjectHideFlags: 0

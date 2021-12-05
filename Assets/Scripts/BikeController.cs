@@ -26,11 +26,7 @@ public class BikeController : MonoBehaviour
 
     private BikeControl CT;
 
-    
-
     public bool Grounded;
-
-    //public BoxCollider2D DeathCollider;
 
     private Transform SpawnPoint;
 
@@ -42,7 +38,6 @@ public class BikeController : MonoBehaviour
     [HideInInspector]
     public Transform WinBanner;
 
-    // private float WinTimer;
     [HideInInspector]
     public bool HasWon;
 
@@ -69,6 +64,8 @@ public class BikeController : MonoBehaviour
 
     public ParticalManager pt;
 
+    public int Clockwise = 0;
+
     void FixedUpdate()
     {
         //jump would add force from direction of planet
@@ -86,8 +83,6 @@ public class BikeController : MonoBehaviour
         
         if (Bufferleft > 0 && Grounded == true && Current != null)
         {
-            //Debug.Log("Jump" + UpgradeScript.CurrentJump);
-
             Bufferleft = 0;
             Vector2 dir = (transform.position - Current.transform.position).normalized;
             RB.AddForce(dir * JumpForce * UpgradeScript.Vehicles[BikeNum].CurrentJump, ForceMode2D.Impulse);
@@ -116,7 +111,6 @@ public class BikeController : MonoBehaviour
     {
         if (col.gameObject.tag == "Win")
         {
-            //Debug.Log("Win");
             OnWin();
         }
         else if (col.gameObject.transform.childCount > 1)

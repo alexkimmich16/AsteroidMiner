@@ -17,12 +17,8 @@ MonoBehaviour:
   - more levels
   - app store
   ActiveToDo:
-  - Partical effects
-  - LandParticalFix
-  - JumpPartical
-  - GravityPartical(sucking in)
-  - LineRenderer
-  - Tutorial?
+  - auto Velocity
+  - auto Velocity
   GameplayTry:
   - boxes with no gravity
   - Launchable springs

@@ -6,7 +6,8 @@ public class WheelCollision : MonoBehaviour
 {
     public BikeController Bike;
     public Transform last;
-    //public bool front;
+    public Vector2 Dir;
+
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -18,7 +19,14 @@ public class WheelCollision : MonoBehaviour
             
             Bike.pt.Land();
             Debug.Log("land");
+            Vector2 PlanetDirection = col.transform.position - transform.position;
+            Dir = PlanetDirection;
+            //rb.velocity = new Vector2(0.0f, 2.0f);
+            //transform.position
         }
+        
+        //get position
+        //use position to 
     }
 
     void OnCollisionExit2D(Collision2D col)
