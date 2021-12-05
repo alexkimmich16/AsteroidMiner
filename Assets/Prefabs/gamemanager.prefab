@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4905285745080565304
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4905285745080565308}
+  - component: {fileID: 4905285745080565309}
+  - component: {fileID: 4905285745080565311}
+  - component: {fileID: 4905285745080565310}
+  m_Layer: 0
+  m_Name: gamemanager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4905285745080565308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905285745080565304}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 16.741272, y: -0.29713118, z: -125.61545}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4905285745080565309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905285745080565304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823525a90d0093c4591ce61532b29971, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Spawn: {fileID: 0}
+  MyBike: {fileID: 0}
+  Bikes:
+  - {fileID: 1360014994414020208, guid: 4863b0a9fb8eff940b3ac2f628415755, type: 3}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  MyBikeNumber: 0
+  Money: 20
+  ControlLevel: 0
+  CurrentControl: 0
+  ControlStats:
+  - 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  ControlCosts: 01000000020000000300000004000000
+  SpeedLevel: 0
+  CurrentSpeed: 0
+  SpeedStats:
+  - 1
+  - 1.2
+  - 1.4
+  - 1.6
+  - 1.8
+  SpeedCosts: 050000000a0000000f00000014000000
+  IsGame: 0
+--- !u!114 &4905285745080565311
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905285745080565304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dd8bdacec3155c44af0ca74bd1dfcc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TotalLevels:
+  - Stars: 000000
+  - Stars: 000000
+--- !u!114 &4905285745080565310
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4905285745080565304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29c371953c6727e4e9f375a1ac2caa07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Manager: {fileID: 4905285745080565304}
+  upgrades: {fileID: 4905285745080565309}
