@@ -8,6 +8,8 @@ TagManager:
   - Booster
   - coin
   - Zone
+  - Reflector
+  - Floor
   layers:
   - Default
   - TransparentFX

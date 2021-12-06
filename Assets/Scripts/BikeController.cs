@@ -64,29 +64,66 @@ public class BikeController : MonoBehaviour
 
     public ParticalManager pt;
 
-    public int Clockwise = 0;
+    public bool Clockwise;
+    public Vector2 Dir;
 
+    public Transform FloorTile;
+
+    public void Reflect()
+    {
+        Clockwise = !Clockwise;
+    }
+    public void SetClockwise(bool ClockwiseBool)
+    {
+        Clockwise = ClockwiseBool;
+    }
+
+    public Vector2 adjustClockwise(Vector2 Vector, bool Clockwise)
+    {
+        if (Clockwise == false)
+        {
+            return new Vector2(Vector.y, -Vector.x);
+        }
+        else
+        {
+            return new Vector2(-Vector.y, Vector.x);
+        }
+    }
     void FixedUpdate()
     {
-        //jump would add force from direction of planet
-        //OR just have a tic on top that denotes direction of jump
-
-        //forward is always just right
-
         int BikeNum = UpgradeScript.MyBikeNumber;
-        if (Grounded == true)
+        if (Grounded == true && FloorTile != null)
         {
-            //RB.AddForce(transform.right * Speed * UpgradeScript.Vehicles[BikeNum].CurrentSpeed * Time.fixedDeltaTime);
-
-            RB.AddForce(Vector2.right * Speed * UpgradeScript.Vehicles[BikeNum].CurrentSpeed * Time.fixedDeltaTime);
-        }
-        
-        if (Bufferleft > 0 && Grounded == true && Current != null)
-        {
-            Bufferleft = 0;
-            Vector2 dir = (transform.position - Current.transform.position).normalized;
-            RB.AddForce(dir * JumpForce * UpgradeScript.Vehicles[BikeNum].CurrentJump, ForceMode2D.Impulse);
+            Vector2 Direction = new Vector2(0, 0);
+            if (Clockwise == true)
+            {
+                Direction = new Vector2(FloorTile.right.x, FloorTile.right.y).normalized;
+            }
+            else
+            {
+                Direction = new Vector2(-FloorTile.right.x, -FloorTile.right.y).normalized;
+            }
             
+            Vector2 SpeedDirection = (Direction * Speed);
+            RB.velocity = SpeedDirection;
+        }
+
+        if (Current != null)
+        {
+            if (Bufferleft > 0 && Grounded == true)
+            {
+                Bufferleft = 0;
+                Vector2 direction = (transform.position - Current.transform.position).normalized;
+                RB.AddForce(direction * JumpForce * UpgradeScript.Vehicles[BikeNum].CurrentJump, ForceMode2D.Impulse);
+            }
+        }
+        if (Current != null && Grounded == true && FloorTile == null)
+        {
+            Vector2 PlanetDirection = Current.transform.position - transform.position;
+            Vector2 AjustedDirection = adjustClockwise(PlanetDirection, Clockwise).normalized;
+            Vector2 AjustedDirectionSpeed = AjustedDirection * Speed;
+            Dir = AjustedDirectionSpeed;
+            RB.velocity = new Vector2(Dir.x, Dir.y);
         }
         if (CT.Jumping == true)
         {
@@ -105,6 +142,7 @@ public class BikeController : MonoBehaviour
         }
         Bufferleft -= 1;
         GravityCheck();
+        
     }
 
     void OnCollisionEnter2D(Collision2D col)
@@ -148,8 +186,6 @@ public class BikeController : MonoBehaviour
     {
         Gravity.Add(GravityEnabled);
     }
-
-    
 
     void Start()
     {
@@ -226,6 +262,7 @@ public class BikeController : MonoBehaviour
             if (Gravity[i] == false)
             {
                 IsGravity = false;
+
                 //Debug.Log("false2");
             }
         }

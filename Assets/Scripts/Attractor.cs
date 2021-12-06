@@ -8,11 +8,16 @@ public class Attractor : MonoBehaviour
 
     public Rigidbody2D Other;
 
+    /// <summary>
+    /// minimum distance to pull player
+    /// </summary>
     public float MinDistance;
 
     public float revSpeed;
 
-    //size of the world and distence at which 2 collide
+    /// <summary>
+    /// for checking when gravity should be enabled downwards on player
+    /// </summary>
     public float DistenceSubtract;
     //14
 
