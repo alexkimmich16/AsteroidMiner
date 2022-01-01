@@ -32,6 +32,13 @@ public class Attractor : MonoBehaviour
 
     private bool TimerActive;
 
+    public bool GravityLock = false;
+
+    public void SetGravityLock(bool Set)
+    {
+        GravityLock = Set;
+    }
+
     public void SetTime(float Time)
     {
         MaxTime = Time;
@@ -41,12 +48,10 @@ public class Attractor : MonoBehaviour
     }
 
     //public Transform LookAtPlanet;
-
     void Start()
     {
-        PlanetAssigner.instance.Planets.Add(this);
+        Other = BikeController.instance.RB;
     }
-
 
     void FixedUpdate()
     {

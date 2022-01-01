@@ -69,6 +69,8 @@ public class BikeController : MonoBehaviour
 
     public Transform FloorTile;
 
+    public float GravityPower;
+
     public void Reflect()
     {
         Clockwise = !Clockwise;
@@ -168,7 +170,7 @@ public class BikeController : MonoBehaviour
     {
         if(LoadTimer > .05f && HasWon == false)
         {
-            Physics2D.gravity = new Vector2(0, -10.81f);
+            Physics2D.gravity = new Vector2(0, -GravityPower);
             GameScene.instance.LoadScene(UpgradeScript.Level);
             ThisLevelSystem.CurrectMoney = 0;
         }
@@ -201,15 +203,12 @@ public class BikeController : MonoBehaviour
         CamScript = GameObject.Find("Main Camera").GetComponent<Camera>();
         CamScript.player = transform;
 
-        PlanetAssigner.instance.RB = RB;
-
         GameObject.Find("ThisLevel").GetComponent<ThisLevelSystem>().enabled = true;
 
-        Physics2D.gravity = new Vector2(0, -10.81f);
+        Physics2D.gravity = new Vector2(0, -GravityPower);
 
         CT.Control = this;
     }
-
     public void OnWin()
     {
         if (HasWon == false)
@@ -269,7 +268,7 @@ public class BikeController : MonoBehaviour
 
         if (Gravity.Count == 0)
         {
-            Physics2D.gravity = new Vector2(0, -10.81f);
+            Physics2D.gravity = new Vector2(0, -GravityPower);
         }
         else
         {
@@ -280,7 +279,7 @@ public class BikeController : MonoBehaviour
             }
             else
             {
-                Physics2D.gravity = new Vector2(0, -10.81f);
+                Physics2D.gravity = new Vector2(0, -GravityPower);
                 //Debug.Log("true3");
             }
         }
