@@ -117,12 +117,7 @@ public class GameScene : MonoBehaviour
         Bools.Add(true);
         Bools.Add(true);
         Bools.Add(true);
-
-        
-
         instance = this;
-
-        
     }
     public void LoadScene(int Number)
     {
@@ -175,5 +170,4 @@ public class GameScene : MonoBehaviour
         UpgradeScript.Level = Level;
         Time.timeScale = 1f;
     }
-    
 }
